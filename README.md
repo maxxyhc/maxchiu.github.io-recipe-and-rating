@@ -1,2 +1,3 @@
-# maxchiu.github.io-recipe-and-rating
-A DSC 80 project at UCSD
+# CookSmart: Insights into Recipe Complexity and Ratings
+by Max Chiu
+
