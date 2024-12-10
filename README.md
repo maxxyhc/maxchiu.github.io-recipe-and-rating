@@ -99,3 +99,67 @@ Additionally, many recipes have average ratings that are whole numbers. This is 
 This pivot table highlights how cooking times are grouped into ranges (bins), with average recipe ratings calculated for each time range across different years. It helps identify trends in user preferences, showing whether recipes with certain cooking durations consistently receive higher ratings or if preferences shift over time.
 
 
+# Assessment of Missingness
+
+I believe the description column in the dataset is likely Not Missing At Random (NMAR). The missingness in this column may depend on factors that are not present in the dataset itself. For example, a description might be missing because the person submitting the recipe chose not to provide one, which could be due to personal preferences, time constraints, or simply oversight. These factors are not captured in the dataset, making the missingness NMAR.
+
+To make this missingness Missing At Random (MAR), additional data would be required, such as information about the user submitting the recipe (e.g., their engagement level, experience, or frequency of recipe submissions). With such data, we could analyze whether the missing descriptions are associated with specific user behaviors or other observable factors, thereby turning the missingness into MAR.
+
+
+# 🔍 Permutation Tests  
+
+## Results of Missingness Permutation Tests  
+
+We conducted permutation tests to examine whether the missingness of the `description` column is associated with differences in the distributions of two variables: **cooking time (`minutes`)** and **number of ingredients (`n_ingredients`)**. The results are summarized below:  
+
+### 1. Test for `minutes`  
+- **Observed Mean Difference**: The observed difference in mean cooking times between recipes with missing descriptions and those with descriptions is highlighted in the plot below (red line).  
+- **P-Value**: Approximately **0.319**, which is greater than the typical significance threshold (e.g., 0.05).  
+- **Interpretation**: There is no statistically significant evidence to suggest that the missingness of `description` is associated with a difference in cooking times.  
+
+### 2. Test for `n_ingredients`  
+- **Observed Mean Difference**: The observed difference in the average number of ingredients between recipes with missing descriptions and those with descriptions is highlighted in the plot below (red line).  
+- **P-Value**: Approximately **0.017**, which is less than the typical significance threshold (e.g., 0.05).  
+- **Interpretation**: There is a statistically significant difference in the average number of ingredients based on whether the description is missing. Recipes with missing descriptions may tend to have fewer or more ingredients than those with descriptions.  
+
+## Implications  
+
+The results of the permutation tests reveal that:  
+1. **Missing descriptions are not associated with cooking times (`minutes`)**.  
+2. **Missing descriptions are significantly associated with the number of ingredients (`n_ingredients`)**.  
+
+This suggests that the missingness of `description` could be **conditionally missing at random (MAR)** with respect to the number of ingredients. Future analyses should consider this relationship when handling missing values in the dataset.
+
+## Visualizations  
+
+### Permutation Test: Difference in Mean `Minutes` by Missing Description  
+
+<iframe
+  src="assets/Permutation-Test/-Difference-in-Mean-'Minutes'-by-Missing-Description.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### Permutation Test: Difference in Mean `n_ingredients` by Missing Description  
+
+<iframe
+  src="assets/Permutation-Test/-Difference-in-Mean-'n_ingredients'-by-Missing-Description.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/Distribution of Minutes when Description is Missing.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/Distribution of Minutes when Description is not Missing.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
