@@ -135,7 +135,7 @@ This suggests that the missingness of `description` could be **conditionally mis
 ### Permutation Test: Difference in Mean `Minutes` by Missing Description  
 
 <iframe
-  src="assets/Permutation-Test/-Difference-in-Mean-'Minutes'-by-Missing-Description.html"
+  src="assets/Permutation-Test/-Difference-in-Mean-Minutes-by-Missing-Description.html"
   width="800"
   height="600"
   frameborder="0"
@@ -144,7 +144,7 @@ This suggests that the missingness of `description` could be **conditionally mis
 ### Permutation Test: Difference in Mean `n_ingredients` by Missing Description  
 
 <iframe
-  src="assets/Permutation-Test/-Difference-in-Mean-'n_ingredients'-by-Missing-Description.html"
+  src="assets/Permutation-Test/-Difference-in-Mean-n_ingredients-by-Missing-Description.html"
   width="800"
   height="600"
   frameborder="0"
