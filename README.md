@@ -151,14 +151,14 @@ This suggests that the missingness of `description` could be **conditionally mis
 ></iframe>
 
 <iframe
-  src="assets/Distribution of Minutes when Description is Missing.html"
+  src="assets/Distribution-of-Minutes-when-Description-is-Missing.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
 
 <iframe
-  src="assets/Distribution of Minutes when Description is not Missing.html"
+  src="assets/Distribution-of-Minutes-when-Description-is-not-Missing.html"
   width="800"
   height="600"
   frameborder="0"
