@@ -313,3 +313,39 @@ The final model incorporated:
 - **Hyperparameter tuning** to optimize model complexity.
 
 These changes led to modest improvements in performance, reducing MSE and increasing \( R^2 \). However, the results suggest that there are still much room to improve the model, including feature engineering and the use of non-linear algorithms, to build a highly accurate and interpretable model for predicting average recipe ratings.
+
+# Fairness Analysis
+
+### Choice of Groups:
+For the fairness analysis, we split the data into two groups based on the median value of the `calories` feature:
+- **Group X**: Recipes with above-median calories (labeled as "fat").
+- **Group Y**: Recipes with below-median calories (labeled as "non-fat").
+
+Recipes with `calories > median_calories` are considered "fat," while those with `calories <= median_calories` are considered "non-fat."
+
+### Evaluation Metric:
+We use **\( R^2 \)** as the evaluation metric:
+- \( R^2 \) measures the proportion of variance in the target variable (`average_rating`) explained by the model for each group.
+- A higher \( R^2 \) indicates better model performance.
+- \( R^2 \) is preferred over RMSE because it directly quantifies the explanatory power of the model, which is critical for assessing fairness in predictive performance.
+
+### Hypotheses:
+- **Null Hypothesis**
+  - The \( R^2 \) values for the "fat" and "non-fat" groups are roughly the same, and any observed difference in \( R^2 \) is due to random chance.
+
+- **Alternative Hypothesis**
+  - The \( R^2 \) values for the "fat" and "non-fat" groups are significantly different, suggesting that the model performs better for one group over the other.
+
+### Test Statistic:
+- The test statistic is the **observed difference in \( R^2 \)** between the "fat" and "non-fat" groups
+
+### Significance Level
+- The significance level is set at **0.05 (5%)**
+
+### Conclusion
+- The p-value for the difference in \( R^2 \) (0.7060) is **greater than the significance level (\( \alpha = 0.05 \))**.
+- **Fail to reject the null hypothesis**: There is insufficient evidence to suggest that the \( R^2 \) values for the "fat" and "non-fat" groups are significantly different.
+- This result indicates that the model's ability to explain variance in `average_rating` is consistent across recipes with above- and below-median calorie content. Any observed difference in \( R^2 \) is likely due to random chance.
+
+### Interpretation
+The fairness analysis reveals that the model performs similarly for both groups in terms of \( R^2 \), indicating no significant bias in predictive performance based on calorie content. However, the negative \( R^2 \) for the "fat" group suggests that the model struggles to generalize effectively for this subgroup, highlighting potential areas for improvement in feature engineering or model selection.
