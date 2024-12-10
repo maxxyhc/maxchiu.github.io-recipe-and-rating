@@ -54,3 +54,28 @@ Cleaning and preparing the dataset was an essential part of ensuring accurate an
 | sexy greek   cocktail           | 423875 |         5 |            65502 | 2010-05-07  |
 | sexy greek   cocktail           | 423875 |         5 |            65502 | 2010-05-07  |
 
+# 📊 Visualization of Cooking Time Distribution  
+
+<iframe
+  src="assets/Distribution-of-Cooking-Time-(minutes)-Outliers-Removed.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The data shows that most recipes require **less than 50 minutes** to prepare, with the frequency significantly declining as cooking time increases. This trend suggests that users prefer recipes with shorter preparation times, likely due to their convenience for everyday cooking.
+
+## Key Observations  
+- Recipes with a cooking time under 50 minutes are the most frequent in the dataset.
+- Longer cooking times (>100 minutes) occur less frequently, even after removing outliers, suggesting that such recipes may inherently be less common or less appealing for everyday use.
+
+# 📊 Visualization of Calories vs. Average Recipe Ratings Distribution 
+
+<iframe
+  src="assets/Calories-vs.-Average-Recipe-Ratings.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+
