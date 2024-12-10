@@ -78,4 +78,24 @@ The data shows that most recipes require **less than 50 minutes** to prepare, wi
   frameborder="0"
 ></iframe>
 
+The scatter plot demonstrates the relationship between calories and average recipe ratings. Most points cluster in the top-left corner, suggesting that recipes with lower calorie counts tend to receive higher ratings.
+
+Additionally, many recipes have average ratings that are whole numbers. This is likely because these recipes received only a few ratings. Since individual ratings are typically whole numbers, the averages of one or a few rating of the same value will be whole values (e.g., 3, 4, or 5). 
+
+# 📊 Grouped Data: Average Ratings by Cooking Time and Year  
+
+## Pivot Table: Average Recipe Ratings by Cooking Time  
+
+| minutes_bin   |    2008 |    2009 |    2010 |    2011 |    2012 |    2013 |    2014 |    2015 |    2016 |    2017 |    2018 |
+|:--------------|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
+| 0-30          | 4.45186 | 4.46313 | 4.48639 | 4.49254 | 4.44288 | 4.4481  | 4.21212 | 3.98246 | 3.82222 | 3.125   | 3.44681 |
+| 30-60         | 4.39622 | 4.39526 | 4.36219 | 4.42664 | 4.40462 | 4.33494 | 4.35174 | 4.28889 | 3.76531 | 2.87097 | 3.44068 |
+| 60-90         | 4.3321  | 4.32736 | 4.29915 | 4.34734 | 4.31989 | 4.3145  | 4.13008 | 4.40789 | 3.54348 | 2.97938 | 3.14516 |
+| 90-120        | 4.32129 | 4.31367 | 4.39192 | 4.26556 | 4.30977 | 4.06042 | 4.38776 | 3.5     | 2.5     | 1.82143 | 3.31579 |
+| 120-150       | 4.24064 | 4.34937 | 4.42727 | 4.38506 | 4.28146 | 4.14719 | 4.52525 | 4.7     | 5       | 3.16    | 2.08333 |
+
+### Significance  
+
+This pivot table highlights how cooking times are grouped into ranges (bins), with average recipe ratings calculated for each time range across different years. It helps identify trends in user preferences, showing whether recipes with certain cooking durations consistently receive higher ratings or if preferences shift over time.
+
 
