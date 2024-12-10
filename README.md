@@ -213,3 +213,45 @@ Other metrics such as **Mean Absolute Error (MAE)** or **Root Mean Squared Error
 - MSE penalizes larger errors more than MAE, making it more suitable when significant deviations from the actual value are less desirable.
 - RMSE, while useful, adds additional complexity without significant interpretative benefits, as MSE already provides a clear sense of the average squared error.
 
+# Baseline Model
+
+**Model Pipeline**:
+   - **Algorithm**: Linear Regression
+   - **Pipeline Components**:
+     - Applied a square root transformation (`np.sqrt`) to all features using a `ColumnTransformer` to address potential skewness and improve linearity.
+
+**Features**:
+   - Quantitative features:
+     - `minutes`
+     - `n_steps`
+     - `calories`
+     - `total_fat`
+     - `sugar`
+     - `sodium`
+     - `protein`
+     - `saturated_fat`
+     - `carbohydrates`
+
+**Performance**:
+   - **MSE**: 0.67437
+   - **R²**: 0.000011
+   - This model has a high MSE and a low \( R^2 \) value close to 0,indicating poor performance. The residual pattern persists, suggesting the need for more complex modeling approaches.
+
+### Feature Analysis
+- All selected features are **quantitative**, with no ordinal or nominal variables. This simplifies preprocessing as no categorical encodings (e.g., one-hot encoding) were required.
+- A square root transformation was applied to all features to reduce skewness, but it had a negligible effect on performance.
+
+
+### Performance Analysis
+- **MSE (0.67437)**: Slightly reduced compared to the first model.
+- **R² (0.000011)**: Improved to a small positive value, but still very close to zero, suggesting the model is ineffective.
+
+### Conclusion on Model Quality:
+The models are not “good” because:
+1. **R² Score**: Near-zero \( R^2 \) indicates the models cannot explain the variability in the target variable.
+2. **Residual Patterns**: Non-random residual patterns suggest unmet assumptions of linear regression or insufficiently complex modeling.
+3. **Metric Interpretation**: The high MSE implies substantial prediction errors.
+
+
+# Final Model
+
