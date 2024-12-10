@@ -255,3 +255,61 @@ The models are not “good” because:
 
 # Final Model
 
+### Features Added and Their Justification
+
+For the final model, we retained the original features:
+- `minutes`
+- `n_steps`
+- `calories`
+- `total_fat`
+- `sugar`
+- `sodium`
+- `protein`
+- `saturated_fat`
+- `carbohydrates`
+
+### Feature Transformation
+1. **Logarithmic Transformation**:
+   - Applied to all features to reduce skewness and better align the data distribution with the assumptions of linear regression.
+   - This transformation handles skewed features like `minutes` and `calories`, improving model generalizability.
+   - It captures diminishing returns, which is critical for features like `calories` or `sodium`, where extreme values may have a non-linear effect on `average_rating`.
+
+2. **Polynomial Features**:
+   - Added polynomial features to allow the model to capture **non-linear interactions** between features. These transformations align with the data-generating process, where relationships between recipe features and user ratings are non-linear and interdependent.
+
+### Modeling Algorithm and Hyperparameters
+
+The final model uses **Linear Regression** but incorporates **polynomial features** to extend its capacity to model non-linear relationships.
+
+### Hyperparameter Tuning
+1. **Hyperparameter**: Degree of polynomial features (`poly_features__degree`).
+2. **Method**: Used **GridSearchCV** to test polynomial degrees from 1 to 5.
+3. **Evaluation Metric**: Optimized for the **R² score** using 5-fold cross-validation.
+4. **Result**:
+   - **Best Degree**: 3
+   - This degree balances model complexity and avoids overfitting while capturing non-linear relationships effectively.
+
+### Final Model Performance
+
+### Metrics
+- **Baseline Model**:
+  - **MSE**: 0.6860
+  - \( R^2 \): -0.00042 (virtually no variance explained)
+
+- **Final Model**:
+  - **MSE**: 0.6702
+  - \( R^2 \): 0.0227 (explains ~2.3% of the variance)
+
+### Improvement
+- **Lower MSE**: The final model reduced the mean squared error, showing better prediction accuracy on average.
+- **Higher \( R^2 \)**: The final model captures some meaningful variance in `average_rating` compared to the baseline.
+- **Complex Relationships**: The introduction of polynomial features and log transformations allowed the model to better represent the underlying relationships in the data.
+
+### Conclusion
+
+The final model incorporated:
+- **Logarithmic transformations** to handle skewed features.
+- **Polynomial features** to model non-linear relationships.
+- **Hyperparameter tuning** to optimize model complexity.
+
+These changes led to modest improvements in performance, reducing MSE and increasing \( R^2 \). However, the results suggest that there are still much room to improve the model, including feature engineering and the use of non-linear algorithms, to build a highly accurate and interpretable model for predicting average recipe ratings.
