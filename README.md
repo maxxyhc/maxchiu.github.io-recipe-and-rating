@@ -106,9 +106,9 @@ I believe the description column in the dataset is likely Not Missing At Random 
 To make this missingness Missing At Random (MAR), additional data would be required, such as information about the user submitting the recipe (e.g., their engagement level, experience, or frequency of recipe submissions). With such data, we could analyze whether the missing descriptions are associated with specific user behaviors or other observable factors, thereby turning the missingness into MAR.
 
 
-# 🔍 Permutation Tests  
+## 🔍 Permutation Tests  
 
-## Results of Missingness Permutation Tests  
+### Results of Missingness Permutation Tests  
 
 We conducted permutation tests to examine whether the missingness of the `description` column is associated with differences in the distributions of two variables: **cooking time (`minutes`)** and **number of ingredients (`n_ingredients`)**. The results are summarized below:  
 
@@ -122,7 +122,7 @@ We conducted permutation tests to examine whether the missingness of the `descri
 - **P-Value**: Approximately **0.017**, which is less than the typical significance threshold (e.g., 0.05).  
 - **Interpretation**: There is a statistically significant difference in the average number of ingredients based on whether the description is missing. Recipes with missing descriptions may tend to have fewer or more ingredients than those with descriptions.  
 
-## Implications  
+### Implications  
 
 The results of the permutation tests reveal that:  
 1. **Missing descriptions are not associated with cooking times (`minutes`)**.  
@@ -130,12 +130,12 @@ The results of the permutation tests reveal that:
 
 This suggests that the missingness of `description` could be **conditionally missing at random (MAR)** with respect to the number of ingredients. Future analyses should consider this relationship when handling missing values in the dataset.
 
-## Visualizations  
+### Visualizations  
 
 ### Permutation Test: Difference in Mean `Minutes` by Missing Description  
 
 <iframe
-  src="assets/Permutation-Test/-Difference-in-Mean-Minutes-by-Missing-Description.html"
+  src="assets/minutes.html"
   width="800"
   height="600"
   frameborder="0"
@@ -144,7 +144,7 @@ This suggests that the missingness of `description` could be **conditionally mis
 ### Permutation Test: Difference in Mean `n_ingredients` by Missing Description  
 
 <iframe
-  src="assets/Permutation-Test/-Difference-in-Mean-n_ingredients-by-Missing-Description.html"
+  src="assets/n_ingredients.html"
   width="800"
   height="600"
   frameborder="0"
@@ -163,3 +163,53 @@ This suggests that the missingness of `description` could be **conditionally mis
   height="600"
   frameborder="0"
 ></iframe>
+
+# Hypothesis Testing
+
+### Null Hypothesis
+The mean average rating of recipes with short cooking times is equal to the mean average rating of recipes with long cooking times.
+
+### Alternative Hypothesis
+The mean average rating of recipes with short cooking times is not equal to the mean average rating of recipes with long cooking times.
+
+### Test Statistic
+The test statistic is the **difference between the mean ratings** of the two groups (short vs. long cooking times). This choice directly compares the means, making it an intuitive measure for identifying any difference.
+
+### Significance Level
+A significance level of **0.05 (5%)** was selected. This is a standard threshold for hypothesis testing that balances the risks of Type I and Type II errors.
+
+### Permutation Test Results
+- **Observed Difference:** 0.0177  
+- **p-Value:** 0.005  
+
+### Conclusion
+Since the **p-value (0.005)** is less than the significance level (0.05), we reject the null hypothesis. This suggests that there is a statistically significant difference in mean ratings between recipes with short and long cooking times.
+
+The **permutation test** was chosen because I want to test whether the two distributions,mean ratings of recipes with short and long cooking times, differ significantly. The test statistic is the observed **difference in mean** ratings between the two groups. I chose this measure because I want to see whether one distribution is greater, less, or significantly different from the other distribution. This difference directly quantifies the relationship between the two groups, making it an intuitive and interpretable measure for this analysis. A significance level of 0.05 was selected as it is a standard threshold.
+
+
+# Framing a Prediction Problem
+
+### Prediction Problem
+The goal is to predict the **average rating** of recipes based on their features. This is a **regression problem**, as the target variable (`average_rating`) is continuous, representing the mean score given to a recipe by users.
+
+### Response Variable
+The response variable is **`average_rating`**, chosen for the following reasons:
+1. It directly reflects **user satisfaction**, making it a meaningful metric for recommendation systems in recipe platforms.
+2. Understanding the factors influencing ratings can help **recipe creators improve their recipes** and assist users in finding recipes they are more likely to enjoy.
+3. It provides actionable insights into what attributes are associated with higher-rated recipes, enabling optimization in recipe design and recommendation algorithms.
+
+### Metric for Evaluation
+The chosen evaluation metric is **Mean Squared Error (MSE)**.
+
+### Why MSE?
+- **MSE** measures the average squared difference between the predicted and actual ratings, providing a clear interpretation of the model's prediction error in terms of squared units.
+- It is sensitive to large errors, emphasizing the importance of reducing significant prediction mistakes.
+- Since the response variable (`average_rating`) is continuous, MSE is a standard and effective metric for regression problems.
+
+
+### Justification of Metric Choice
+Other metrics such as **Mean Absolute Error (MAE)** or **Root Mean Squared Error (RMSE)** were considered, but MSE was chosen because:
+- MSE penalizes larger errors more than MAE, making it more suitable when significant deviations from the actual value are less desirable.
+- RMSE, while useful, adds additional complexity without significant interpretative benefits, as MSE already provides a clear sense of the average squared error.
+
