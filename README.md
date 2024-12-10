@@ -144,7 +144,7 @@ This suggests that the missingness of `description` could be **conditionally mis
 ### Permutation Test: Difference in Mean `n_ingredients` by Missing Description  
 
 <iframe
-  src="assets/ningredients.html"
+  src="assets/nIngredient.html"
   width="800"
   height="600"
   frameborder="0"
